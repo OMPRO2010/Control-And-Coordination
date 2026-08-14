@@ -1,0 +1,260 @@
+// ==========================================
+// CONTROL & COORDINATION
+// FUTURISTIC QUIZ SYSTEM
+// ==========================================
+
+
+// ---------- SMOOTH NAVIGATION ----------
+
+document.querySelectorAll("nav a").forEach(link => {
+
+    link.addEventListener("click", function(event) {
+
+        event.preventDefault();
+
+        const target = document.querySelector(
+            this.getAttribute("href")
+        );
+
+        if (target) {
+            target.scrollIntoView({
+                behavior: "smooth"
+            });
+        }
+
+    });
+
+});
+
+
+// ---------- QUIZ ----------
+
+function checkQuiz() {
+
+    let score = 0;
+    let answered = 0;
+
+    for (let i = 1; i <= 5; i++) {
+
+        const answer = document.querySelector(
+            `input[name="q${i}"]:checked`
+        );
+
+        if (answer) {
+
+            answered++;
+
+            const option = answer.closest(".option");
+
+            if (answer.value === "1") {
+
+                score++;
+
+                option.style.background =
+                    "linear-gradient(90deg,#064e3b,#00a878)";
+
+                option.style.boxShadow =
+                    "0 0 20px rgba(0,255,180,0.5)";
+
+            } else {
+
+                option.style.background =
+                    "linear-gradient(90deg,#4c0519,#be185d)";
+
+                option.style.boxShadow =
+                    "0 0 20px rgba(255,0,100,0.5)";
+            }
+        }
+    }
+
+
+    // ---------- RESULT ----------
+
+    const result = document.getElementById("result");
+
+    if (answered < 5) {
+
+        result.innerHTML =
+            "⚠️ COMPLETE ALL QUESTIONS FIRST";
+
+        result.style.color = "#ffd166";
+
+        return;
+    }
+
+
+    const percentage = (score / 5) * 100;
+
+    let message;
+
+
+    if (score === 5) {
+
+        message =
+            "🔥 PERFECT! FULL AURA!";
+
+    } else if (score >= 4) {
+
+        message =
+            "⚡ EXCELLENT!";
+
+    } else if (score >= 3) {
+
+        message =
+            "🧠 GOOD JOB!";
+
+    } else {
+
+        message =
+            "📚 KEEP LEARNING!";
+    }
+
+
+    result.innerHTML =
+        message +
+        "<br><strong>" +
+        score +
+        " / 5</strong>" +
+        "<br><small>" +
+        percentage +
+        "%</small>";
+
+
+    result.style.color = "#00ffcc";
+
+    result.style.textShadow =
+        "0 0 15px #00ffcc";
+
+
+    // ---------- AURA EFFECT ----------
+
+    result.animate(
+        [
+            {
+                transform: "scale(0.8)",
+                opacity: 0
+            },
+            {
+                transform: "scale(1.15)",
+                opacity: 1
+            },
+            {
+                transform: "scale(1)",
+                opacity: 1
+            }
+        ],
+        {
+            duration: 700,
+            easing: "ease-out"
+        }
+    );
+}
+
+
+// ---------- SCROLL REVEAL ----------
+
+const sections =
+    document.querySelectorAll("section");
+
+
+const observer =
+    new IntersectionObserver(
+        entries => {
+
+            entries.forEach(entry => {
+
+                if (entry.isIntersecting) {
+
+                    entry.target.style.opacity = "1";
+
+                    entry.target.style.transform =
+                        "translateY(0)";
+                }
+
+            });
+
+        },
+        {
+            threshold: 0.12
+        }
+    );
+
+
+sections.forEach(section => {
+
+    section.style.opacity = "0";
+
+    section.style.transform =
+        "translateY(35px)";
+
+    section.style.transition =
+        "opacity 0.8s ease, transform 0.8s ease";
+
+    observer.observe(section);
+
+});
+
+
+// ---------- BRAIN AURA ----------
+
+const brain =
+    document.querySelector(".brain");
+
+
+if (brain) {
+
+    brain.addEventListener("mouseenter", () => {
+
+        brain.style.filter =
+            "drop-shadow(0 0 20px #00ffff) " +
+            "drop-shadow(0 0 60px #008cff)";
+
+    });
+
+
+    brain.addEventListener("mouseleave", () => {
+
+        brain.style.filter =
+            "drop-shadow(0 0 15px #00bfff) " +
+            "drop-shadow(0 0 40px #008cff)";
+
+    });
+
+}
+
+
+// ---------- START QUIZ BUTTON ----------
+
+const startButton =
+    document.querySelector(".hero-button");
+
+
+if (startButton) {
+
+    startButton.addEventListener("click", () => {
+
+        const quiz =
+            document.getElementById("quiz");
+
+        if (quiz) {
+
+            quiz.scrollIntoView({
+                behavior: "smooth"
+            });
+
+        }
+
+    });
+
+}
+
+
+// ---------- CONSOLE MESSAGE ----------
+
+console.log(
+    "🧠 NEURAL COMMAND SYSTEM ONLINE"
+);
+
+console.log(
+    "⚡ CONTROL & COORDINATION QUIZ READY"
+);
