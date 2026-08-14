@@ -1494,55 +1494,159 @@ id="quiz">
 <script>
 
 const questions = [
-
     {
-        question:
-        "Which part mainly controls reflex actions?",
-
-        answers:[
-            "Spinal cord",
-            "Cerebellum",
-            "Forebrain",
-            "Thyroid gland"
-        ],
-
-        correct:0
+        q: "Which part mainly controls reflex actions?",
+        a: ["Spinal cord", "Cerebellum", "Forebrain", "Thyroid gland"],
+        c: 0
     },
-
-
     {
-        question:
-        "What is the basic unit of the nervous system?",
-
-        answers:[
-            "Hormone",
-            "Neuron",
-            "Gland",
-            "Muscle"
-        ],
-
-        correct:1
+        q: "What is the basic unit of the nervous system?",
+        a: ["Hormone", "Neuron", "Gland", "Muscle"],
+        c: 1
     },
-
-
     {
-        question:
-        "Which part of the brain maintains balance and posture?",
-
-        answers:[
-            "Cerebellum",
-            "Forebrain",
-            "Medulla",
-            "Spinal cord"
+        q: "Which part of the brain maintains balance?",
+        a: ["Cerebellum", "Forebrain", "Medulla", "Spinal cord"],
+        c: 0
+    },
+    {
+        q: "Which hormone regulates blood glucose?",
+        a: ["Auxin", "Adrenaline", "Insulin", "Thyroxine"],
+        c: 2
+    },
+    {
+        q: "Growth towards light is called:",
+        a: ["Geotropism", "Hydrotropism", "Phototropism", "Chemotropism"],
+        c: 2
+    },
+    {
+        q: "What is the correct reflex arc?",
+        a: [
+            "Receptor → Sensory neuron → Spinal cord → Motor neuron → Effector",
+            "Brain → Muscle → Receptor",
+            "Effector → Brain → Receptor",
+            "Motor neuron → Receptor → Brain"
         ],
+        c: 0
+    },
+    {
+        q: "A reflex action is:",
+        a: [
+            "Slow and voluntary",
+            "Fast and automatic",
+            "Always conscious",
+            "Only found in plants"
+        ],
+        c: 1
+    }
+];
 
-        correct:0
-    },  
-   
-   <script>
-document.getElementById("question").innerHTML = "🔥 QUIZ IS WORKING!";
+let current = 0;
+let score = 0;
+
+function showQuestion() {
+
+    const q = questions[current];
+
+    document.getElementById("question").innerHTML = q.q;
+
+    document.getElementById("questionNumber").innerHTML =
+        "QUESTION " + (current + 1) + " / " + questions.length;
+
+    document.getElementById("score").innerHTML =
+        "SCORE: " + score;
+
+    const box = document.getElementById("answers");
+
+    box.innerHTML = "";
+
+    document.getElementById("message").innerHTML = "";
+
+    document.getElementById("nextBtn").style.display = "none";
+
+    for(let i = 0; i < q.a.length; i++) {
+
+        const button = document.createElement("button");
+
+        button.className = "answer";
+
+        button.innerHTML = q.a[i];
+
+        button.onclick = function() {
+
+            checkAnswer(i, button);
+
+        };
+
+        box.appendChild(button);
+    }
+}
+
+
+function checkAnswer(choice, button) {
+
+    const q = questions[current];
+
+    const buttons =
+        document.querySelectorAll(".answer");
+
+    buttons.forEach(function(btn) {
+        btn.disabled = true;
+    });
+
+    if(choice === q.c) {
+
+        score++;
+
+        button.classList.add("correct");
+
+        document.getElementById("message").innerHTML =
+            "✓ CORRECT! 🔥";
+
+    } else {
+
+        button.classList.add("wrong");
+
+        buttons[q.c].classList.add("correct");
+
+        document.getElementById("message").innerHTML =
+            "✕ WRONG! The correct answer is highlighted.";
+
+    }
+
+    document.getElementById("score").innerHTML =
+        "SCORE: " + score;
+
+    document.getElementById("nextBtn").style.display =
+        "inline-block";
+}
+
+
+function nextQuestion() {
+
+    current++;
+
+    if(current < questions.length) {
+
+        showQuestion();
+
+    } else {
+
+        document.getElementById("question").innerHTML =
+            "🎉 QUIZ COMPLETE!";
+
+        document.getElementById("answers").innerHTML = "";
+
+        document.getElementById("message").innerHTML =
+            "🔥 YOUR FINAL SCORE: " +
+            score + " / " + questions.length;
+
+        document.getElementById("nextBtn").style.display =
+            "none";
+    }
+}
+
+
+showQuestion();
+
 </script>
-
-</body>
-</html>
-             
