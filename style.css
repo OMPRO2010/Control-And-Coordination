@@ -1,0 +1,1112 @@
+/* =========================================================
+   CONTROL & COORDINATION
+   PREMIUM FUTURISTIC CSS
+   ========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #050816;
+    color: #f5f7ff;
+    font-family: Arial, Helvetica, sans-serif;
+    overflow-x: hidden;
+    line-height: 1.6;
+}
+
+/* =========================================================
+   GLOBAL
+   ========================================================= */
+
+:root {
+    --bg: #050816;
+    --bg2: #080d21;
+    --text: #f5f7ff;
+    --muted: #98a3bd;
+    --cyan: #00eaff;
+    --purple: #9d5cff;
+    --pink: #ff4fd8;
+    --green: #55ffb0;
+    --border: rgba(255, 255, 255, 0.10);
+    --glass: rgba(255, 255, 255, 0.045);
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+section {
+    position: relative;
+}
+
+.section {
+    width: min(1180px, 90%);
+    margin: auto;
+}
+
+.section-number {
+    color: var(--cyan);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    margin-bottom: 18px;
+}
+
+.label,
+.eyebrow {
+    color: var(--cyan);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 4px;
+}
+
+h1,
+h2,
+h3 {
+    line-height: 1.05;
+}
+
+p {
+    color: var(--muted);
+}
+
+/* =========================================================
+   LOADER
+   ========================================================= */
+
+.loader {
+    position: fixed;
+    inset: 0;
+    background: #050816;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 20px;
+    animation: loaderOut 1s ease 2s forwards;
+}
+
+.loader-ring {
+    width: 55px;
+    height: 55px;
+    border: 2px solid rgba(0, 234, 255, 0.2);
+    border-top-color: var(--cyan);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+.loader p {
+    font-size: 11px;
+    letter-spacing: 4px;
+    color: var(--cyan);
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes loaderOut {
+    to {
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+    }
+}
+
+/* =========================================================
+   NAVBAR
+   ========================================================= */
+
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 76px;
+    padding: 0 5%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(5, 8, 22, 0.72);
+    backdrop-filter: blur(18px);
+    border-bottom: 1px solid var(--border);
+    z-index: 1000;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+.brand-icon {
+    font-size: 25px;
+}
+
+.accent {
+    color: var(--cyan);
+}
+
+.navbar nav {
+    display: flex;
+    gap: 28px;
+}
+
+.navbar nav a {
+    color: #aeb8d0;
+    font-size: 12px;
+    transition: 0.3s ease;
+}
+
+.navbar nav a:hover {
+    color: var(--cyan);
+}
+
+/* =========================================================
+   HERO
+   ========================================================= */
+
+.hero {
+    min-height: 100vh;
+    padding: 130px 8% 80px;
+    display: grid;
+    grid-template-columns: 1.05fr 0.95fr;
+    align-items: center;
+    gap: 50px;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    width: 650px;
+    height: 650px;
+    left: -250px;
+    top: 50px;
+    background: radial-gradient(circle, rgba(0, 234, 255, 0.12), transparent 65%);
+    filter: blur(20px);
+}
+
+.hero::after {
+    content: "";
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    right: -250px;
+    bottom: -100px;
+    background: radial-gradient(circle, rgba(157, 92, 255, 0.15), transparent 65%);
+    filter: blur(20px);
+}
+
+.hero-grid {
+    position: absolute;
+    inset: 0;
+    opacity: 0.13;
+    background-image:
+        linear-gradient(rgba(255,255,255,0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.08) 1px, transparent 1px);
+    background-size: 60px 60px;
+    mask-image: linear-gradient(to bottom, black, transparent);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+}
+
+.hero h1 {
+    margin-top: 22px;
+    font-size: clamp(55px, 8vw, 105px);
+    font-weight: 900;
+    letter-spacing: -5px;
+    max-width: 850px;
+}
+
+.hero h1 span {
+    color: var(--cyan);
+    text-shadow:
+        0 0 20px rgba(0, 234, 255, 0.7),
+        0 0 70px rgba(0, 234, 255, 0.25);
+}
+
+.hero-description {
+    max-width: 580px;
+    margin-top: 30px;
+    font-size: 18px;
+    color: #9da8c2;
+}
+
+.hero-description strong {
+    color: white;
+}
+
+.hero-actions {
+    display: flex;
+    gap: 14px;
+    margin-top: 38px;
+    flex-wrap: wrap;
+}
+
+.glow-button,
+.outline-button {
+    padding: 15px 23px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    transition: 0.3s ease;
+}
+
+.glow-button {
+    background: var(--cyan);
+    color: #021016;
+    box-shadow: 0 0 35px rgba(0, 234, 255, 0.25);
+}
+
+.glow-button:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 0 55px rgba(0, 234, 255, 0.45);
+}
+
+.glow-button span {
+    margin-left: 12px;
+}
+
+.outline-button {
+    border: 1px solid rgba(255,255,255,0.18);
+    color: white;
+}
+
+.outline-button:hover {
+    border-color: var(--cyan);
+    color: var(--cyan);
+}
+
+.hero-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 45px;
+}
+
+.hero-meta span {
+    padding: 8px 12px;
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    color: #8995b1;
+    font-size: 11px;
+}
+
+/* =========================================================
+   HERO VISUAL
+   ========================================================= */
+
+.hero-visual {
+    height: 550px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.brain-core {
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 105px;
+    background: radial-gradient(
+        circle,
+        rgba(0,234,255,0.18),
+        rgba(157,92,255,0.08) 45%,
+        transparent 70%
+    );
+    box-shadow:
+        0 0 50px rgba(0,234,255,0.25),
+        inset 0 0 40px rgba(157,92,255,0.18);
+    animation: brainFloat 5s ease-in-out infinite;
+    position: relative;
+    z-index: 3;
+}
+
+@keyframes brainFloat {
+    0%,100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-18px);
+    }
+}
+
+.orbit {
+    position: absolute;
+    border: 1px solid rgba(0,234,255,0.18);
+    border-radius: 50%;
+}
+
+.orbit-one {
+    width: 310px;
+    height: 310px;
+    animation: orbit 12s linear infinite;
+}
+
+.orbit-two {
+    width: 410px;
+    height: 410px;
+    border-color: rgba(157,92,255,0.16);
+    animation: orbit 18s linear infinite reverse;
+}
+
+.orbit-three {
+    width: 510px;
+    height: 510px;
+    border-color: rgba(255,79,216,0.10);
+    animation: orbit 25s linear infinite;
+}
+
+@keyframes orbit {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.floating-node {
+    position: absolute;
+    padding: 10px 14px;
+    background: rgba(8,13,33,0.8);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(0,234,255,0.18);
+    border-radius: 8px;
+    color: #dce7ff;
+    font-size: 10px;
+    letter-spacing: 2px;
+    z-index: 4;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.25);
+}
+
+.floating-node span {
+    color: var(--cyan);
+    margin-right: 6px;
+}
+
+.node-one {
+    top: 18%;
+    right: 5%;
+}
+
+.node-two {
+    bottom: 20%;
+    right: 2%;
+}
+
+.node-three {
+    bottom: 11%;
+    left: 7%;
+}
+
+/* =========================================================
+   INTRO
+   ========================================================= */
+
+.intro {
+    min-height: 600px;
+    padding: 150px 0;
+    display: grid;
+    grid-template-columns: 0.5fr 1.2fr 1fr;
+    gap: 50px;
+    align-items: start;
+}
+
+.section-title h2 {
+    font-size: clamp(40px, 5vw, 70px);
+    max-width: 650px;
+    margin-top: 15px;
+}
+
+.section-title h2 span,
+.feature-content h2 span,
+.reflex-content h2 span,
+.brain-heading h2 span,
+.neuron-copy h2 span,
+.plants-heading h2 span,
+.hormone-heading h2 span,
+.quiz-heading h2 span,
+.final-section h2 span {
+    color: var(--cyan);
+}
+
+.intro-text {
+    padding-top: 45px;
+}
+
+.intro-text p {
+    font-size: 17px;
+    margin-bottom: 20px;
+}
+
+.intro-text strong {
+    color: white;
+}
+
+/* =========================================================
+   THREE STEP SYSTEM
+   ========================================================= */
+
+.system-section {
+    width: 90%;
+    max-width: 1150px;
+    margin: 0 auto 160px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.system-card {
+    width: 30%;
+    min-height: 270px;
+    padding: 35px;
+    background: var(--glass);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    transition: 0.4s ease;
+}
+
+.system-card:hover {
+    transform: translateY(-10px);
+    border-color: rgba(0,234,255,0.35);
+    box-shadow: 0 25px 70px rgba(0,234,255,0.08);
+}
+
+.system-number {
+    font-size: 11px;
+    color: var(--cyan);
+    letter-spacing: 2px;
+}
+
+.system-icon {
+    font-size: 45px;
+    margin: 25px 0 20px;
+}
+
+.system-card h3 {
+    font-size: 20px;
+    letter-spacing: 2px;
+}
+
+.system-card p {
+    margin-top: 12px;
+    font-size: 14px;
+}
+
+.system-line {
+    width: 45px;
+    height: 1px;
+    background: rgba(0,234,255,0.3);
+}
+
+/* =========================================================
+   FEATURE
+   ========================================================= */
+
+.feature-section {
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+    min-height: 750px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 100px;
+}
+
+.feature-visual {
+    height: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.neural-circle {
+    width: 350px;
+    height: 350px;
+    border-radius: 50%;
+    border: 1px solid rgba(0,234,255,0.22);
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow:
+        0 0 80px rgba(0,234,255,0.08),
+        inset 0 0 80px rgba(157,92,255,0.08);
+}
+
+.neural-circle span {
+    font-size: 90px;
+    animation: brainFloat 4s ease-in-out infinite;
+}
+
+.neural-dot {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: var(--cyan);
+    border-radius: 50%;
+    box-shadow: 0 0 20px var(--cyan);
+}
+
+.dot-a { top: 10%; left: 30%; }
+.dot-b { top: 30%; right: 8%; }
+.dot-c { bottom: 20%; right: 20%; }
+.dot-d { bottom: 12%; left: 25%; }
+
+.feature-content h2,
+.reflex-content h2,
+.brain-heading h2,
+.neuron-copy h2,
+.plants-heading h2,
+.hormone-heading h2,
+.quiz-heading h2 {
+    font-size: clamp(45px, 6vw, 75px);
+    margin: 15px 0 25px;
+}
+
+.feature-content > p {
+    max-width: 500px;
+    font-size: 17px;
+}
+
+.mini-list {
+    margin-top: 40px;
+    border-top: 1px solid var(--border);
+}
+
+.mini-list div {
+    padding: 17px 0;
+    border-bottom: 1px solid var(--border);
+    color: #a7b2cb;
+    font-size: 14px;
+}
+
+.mini-list b {
+    color: var(--cyan);
+    margin-right: 20px;
+}
+
+/* =========================================================
+   REFLEX
+   ========================================================= */
+
+.reflex-section {
+    margin: 100px auto 170px;
+    width: 90%;
+    max-width: 1200px;
+    padding: 80px;
+    border: 1px solid rgba(0,234,255,0.12);
+    border-radius: 25px;
+    background:
+        radial-gradient(circle at 80% 20%, rgba(0,234,255,0.08), transparent 35%),
+        rgba(255,255,255,0.025);
+}
+
+.reflex-content {
+    max-width: 650px;
+}
+
+.reflex-content > p:last-child {
+    max-width: 560px;
+}
+
+.reflex-flow {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    margin-top: 65px;
+}
+
+.reflex-flow div {
+    padding: 18px 20px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    color: #d9e2f8;
+    font-size: 12px;
+    text-align: center;
+}
+
+.reflex-flow span {
+    display: block;
+    color: var(--cyan);
+    font-size: 10px;
+    margin-bottom: 5px;
+}
+
+.reflex-flow i {
+    color: var(--cyan);
+    font-style: normal;
+}
+
+/* =========================================================
+   BRAIN
+   ========================================================= */
+
+.brain-section {
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+    padding: 140px 0;
+}
+
+.brain-heading {
+    max-width: 800px;
+}
+
+.brain-parts {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    margin-top: 70px;
+    border-top: 1px solid var(--border);
+}
+
+.brain-part {
+    min-height: 300px;
+    padding: 40px 30px;
+    border-right: 1px solid var(--border);
+    transition: 0.35s ease;
+}
+
+.brain-part:last-child {
+    border-right: none;
+}
+
+.brain-part:hover,
+.brain-part.active {
+    background: rgba(0,234,255,0.035);
+}
+
+.brain-part span {
+    color: var(--cyan);
+    font-size: 12px;
+}
+
+.brain-part h3 {
+    margin-top: 60px;
+    font-size: 22px;
+    letter-spacing: 2px;
+}
+
+.brain-part p {
+    margin-top: 15px;
+    font-size: 14px;
+}
+
+/* =========================================================
+   NEURON
+   ========================================================= */
+
+.neuron-section {
+    min-height: 700px;
+    padding: 140px 8%;
+    display: grid;
+    grid-template-columns: 0.8fr 1.2fr;
+    align-items: center;
+    gap: 80px;
+    background:
+        radial-gradient(circle at 80% 50%, rgba(157,92,255,0.08), transparent 35%);
+}
+
+.neuron-copy {
+    max-width: 550px;
+}
+
+.neuron-display {
+    height: 400px;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.neuron-line {
+    width: 90%;
+    height: 5px;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        var(--cyan),
+        var(--purple),
+        var(--pink),
+        transparent
+    );
+    box-shadow:
+        0 0 20px rgba(0,234,255,0.35);
+}
+
+.neuron-symbol {
+    position: absolute;
+    left: 45%;
+    font-size: 75px;
+    filter: drop-shadow(0 0 20px rgba(0,234,255,0.5));
+}
+
+.neuron-label {
+    position: absolute;
+    color: #b5c0d8;
+    font-size: 10px;
+    letter-spacing: 2px;
+}
+
+.label-one {
+    left: 0;
+    top: 35%;
+}
+
+.label-two {
+    left: 35%;
+    top: 20%;
+}
+
+.label-three {
+    right: 20%;
+    top: 62%;
+}
+
+.label-four {
+    right: 0;
+    top: 35%;
+}
+
+/* =========================================================
+   PLANTS
+   ========================================================= */
+
+.plants-section {
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+    padding: 150px 0;
+}
+
+.plants-heading {
+    max-width: 850px;
+}
+
+.plant-grid {
+    margin-top: 75px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.plant-card {
+    min-height: 300px;
+    padding: 40px;
+    border-radius: 18px;
+    border: 1px solid var(--border);
+    background: rgba(255,255,255,0.025);
+    transition: 0.4s ease;
+}
+
+.plant-card:hover {
+    transform: translateY(-10px);
+    border-color: rgba(85,255,176,0.35);
+}
+
+.plant-icon {
+    font-size: 50px;
+}
+
+.plant-card h3 {
+    margin-top: 35px;
+    font-size: 18px;
+    letter-spacing: 2px;
+}
+
+.plant-card p {
+    margin-top: 12px;
+    font-size: 14px;
+}
+
+/* =========================================================
+   HORMONES
+   ========================================================= */
+
+.hormone-section {
+    padding: 150px 8%;
+    background: #070b1c;
+}
+
+.hormone-heading {
+    max-width: 700px;
+}
+
+.hormone-list {
+    max-width: 1100px;
+    margin: 70px auto 0;
+}
+
+.hormone-item {
+    display: grid;
+    grid-template-columns: 70px 180px 1fr;
+    align-items: center;
+    gap: 25px;
+    padding: 28px 0;
+    border-bottom: 1px solid var(--border);
+}
+
+.hormone-item span {
+    color: var(--cyan);
+    font-size: 12px;
+}
+
+.hormone-item strong {
+    font-size: 19px;
+}
+
+.hormone-item p {
+    font-size: 14px;
+}
+
+/* =========================================================
+   QUIZ
+   ========================================================= */
+
+.quiz-section {
+    width: 90%;
+    max-width: 1000px;
+    margin: auto;
+    padding: 160px 0;
+}
+
+.quiz-heading {
+    text-align: center;
+    margin-bottom: 65px;
+}
+
+.quiz-heading p:last-child {
+    margin-top: 15px;
+}
+
+.quiz-box {
+    padding: 45px;
+    border: 1px solid rgba(0,234,255,0.18);
+    border-radius: 20px;
+    background:
+        radial-gradient(circle at top right, rgba(0,234,255,0.07), transparent 40%),
+        rgba(255,255,255,0.025);
+}
+
+.quiz-top {
+    display: flex;
+    justify-content: space-between;
+    color: var(--cyan);
+    font-size: 11px;
+    letter-spacing: 2px;
+}
+
+.quiz-box h3 {
+    font-size: clamp(25px, 4vw, 38px);
+    margin: 45px 0;
+}
+
+.options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.options button {
+    padding: 18px;
+    background: rgba(255,255,255,0.035);
+    color: #dbe4f7;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    cursor: pointer;
+    text-align: left;
+    transition: 0.3s ease;
+}
+
+.options button:hover {
+    border-color: var(--cyan);
+    color: var(--cyan);
+    transform: translateY(-3px);
+}
+
+#quiz-result {
+    margin-top: 25px;
+    min-height: 25px;
+    color: var(--cyan);
+    font-weight: bold;
+}
+
+.next-button {
+    margin-top: 30px;
+    padding: 14px 25px;
+    background: var(--cyan);
+    border: none;
+    border-radius: 8px;
+    font-weight: 800;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.next-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0 30px rgba(0,234,255,0.3);
+}
+
+/* =========================================================
+   FINAL AURA
+   ========================================================= */
+
+.final-section {
+    min-height: 650px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+    padding: 100px 20px;
+}
+
+.final-glow {
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(
+        circle,
+        rgba(0,234,255,0.13),
+        transparent 65%
+    );
+    filter: blur(10px);
+}
+
+.final-section > * {
+    position: relative;
+    z-index: 2;
+}
+
+.final-section p {
+    color: var(--cyan);
+    font-size: 11px;
+    letter-spacing: 5px;
+}
+
+.final-section h2 {
+    font-size: clamp(45px, 7vw, 90px);
+    max-width: 900px;
+    margin: 25px auto 45px;
+    letter-spacing: -3px;
+}
+
+.back-top {
+    display: inline-block;
+    border: 1px solid rgba(0,234,255,0.3);
+    padding: 13px 22px;
+    border-radius: 7px;
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: var(--cyan);
+    transition: 0.3s ease;
+}
+
+.back-top:hover {
+    background: var(--cyan);
+    color: #021016;
+}
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+footer {
+    padding: 55px 7%;
+    border-top: 1px solid var(--border);
+    text-align: center;
+}
+
+.footer-brand {
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+footer p {
+    margin-top: 12px;
+    font-size: 13px;
+}
+
+footer small {
+    display: block;
+    margin-top: 20px;
+    color: #59647e;
+}
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+    .navbar {
+        height: 65px;
+    }
+
+    .navbar nav {
+        display: none;
+    }
+
+    .hero {
+        grid-template-columns: 1fr;
+        padding-top: 130px;
+        text-align: center;
+    }
+
+    .hero-description {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .hero-actions {
+        justify-content: center;
+    }
+
+    .hero-meta {
+        justify-content: center;
+    }
+
+    .hero-visual {
+        height: 420px;
+    }
+
+    .brain-core {
+        width: 170px;
+        height: 170px;
+        font-size: 75px;
+    }
+
+    .orbit-one {
+        width: 250px;
+        height: 250px;
+    }
+
+    .orbit-two {
+        width: 330px;
+        height: 330px;
+    }
+
+    .orb
